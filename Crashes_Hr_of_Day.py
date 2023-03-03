@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read the CSV file
-data = pd.read_csv('/Users/avramenriquez/Documents/AIO Python/Python Files/Allegheny Crash Data/CRASH_ALLEGHENY_2021.csv')
+data = pd.read_csv('CRASH_ALLEGHENY_2021.csv')
 
 # Filter out values above 23 in HOUR_OF_DAY column
 data = data[data['HOUR_OF_DAY'] <= 23]

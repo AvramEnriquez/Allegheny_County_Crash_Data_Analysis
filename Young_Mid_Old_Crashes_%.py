@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read the CSV file
-df = pd.read_csv('/Users/avramenriquez/Documents/AIO Python/Python Files/Allegheny Crash Data/CRASH_ALLEGHENY_2021.csv')
+df = pd.read_csv('CRASH_ALLEGHENY_2021.csv')
 
 # Combine columns DRIVER_COUNT_16YR to DRIVER_COUNT_20YR into one column called DRIVER_COUNT_YOUNG
 df['DRIVER_COUNT_YOUNG'] = df['DRIVER_COUNT_16YR'] + df['DRIVER_COUNT_17YR'] + df['DRIVER_COUNT_18YR'] + df['DRIVER_COUNT_19YR'] + df['DRIVER_COUNT_20YR']
