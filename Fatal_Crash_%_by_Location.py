@@ -1,5 +1,8 @@
 """Attempt to calculate percent chance of getting into a fatal car crash given a latitude and longitude input for Allegheny County."""
 
+import warnings
+warnings.filterwarnings("ignore", message="X does not have valid feature names, but StandardScaler was fitted with feature names")
+
 import tensorflow as tf
 import pandas as pd
 import numpy as np
@@ -48,10 +51,26 @@ model = tf.keras.Sequential([
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # Train the model
-model.fit(X_train, y_train, epochs=75, batch_size=64, validation_data=(X_test, y_test))
+model.fit(X_train, y_train, epochs=25, batch_size=32, validation_data=(X_test, y_test))
 
 # Test the model with a single set of latitude and longitude
-test_data = [[40.439188, -80.010702]] # adjust the values here to test different locations
+test_data = [[40.693872, -79.707209]] # adjust the values here to test different locations
 scaled_test_data = scaler.transform(test_data)
 prediction = model.predict(scaled_test_data)[0][0] * 100
 print(f"The percentage chance of getting into a fatal crash at {test_data[0][0]}, {test_data[0][1]} is {prediction:.2f}%")
+
+# # Test the model to find the highest % fatality by latitude and longitude, scaled to 1 decimal point
+# max_prediction = 0
+# max_lat = None
+# max_lon = None
+# for lat in range(40000000, 42000000, 100000): # To increase decimal and exponentially increase time the for loop runs, remove zeros on the step size (100000)
+#     for lon in range(-81000000, -79000000, 100000): # To increase decimal and exponentially increase time the for loop runs, remove zeros on the step size (100000)
+#         test_data = [[lat / 1000000, lon / 1000000]]
+#         scaled_test_data = scaler.transform(test_data)
+#         prediction = model.predict(scaled_test_data)[0][0] * 100
+#         if prediction > max_prediction:
+#             max_prediction = prediction
+#             max_lat = lat / 1000000
+#             max_lon = lon / 1000000
+# print(f"The highest prediction of {max_prediction:.2f}% is for latitude {max_lat:.6f} and longitude {max_lon:.6f}.")
+
