@@ -1,3 +1,5 @@
+"""Plot points overlayed on a map of crash locations in Allegheny County 2021, saved to an HTML file."""
+
 import pandas as pd
 import folium
 import re

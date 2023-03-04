@@ -1,3 +1,5 @@
+"""Calculate and plot the percentages of young, old, and middle aged fatal crashes versus total crashes."""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 

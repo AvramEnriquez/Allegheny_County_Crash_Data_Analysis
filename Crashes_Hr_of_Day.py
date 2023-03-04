@@ -1,3 +1,5 @@
+"""Plot crashes based off time of day."""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
