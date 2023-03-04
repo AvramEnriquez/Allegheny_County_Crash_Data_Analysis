@@ -5,7 +5,6 @@ warnings.filterwarnings("ignore", message="X does not have valid feature names, 
 
 import tensorflow as tf
 import pandas as pd
-import numpy as np
 import re
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
