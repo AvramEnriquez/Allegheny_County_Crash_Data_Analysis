@@ -48,6 +48,6 @@ Attempt to calculate percent chance of getting into a fatal car crash given a la
 
 
 - Young_Mid_Old_Fatal_Crash_%.py:
-Calculate and plot the percentages of young, old, and middle aged fatal crashes versus total crashes.
+Calculate the percentages of young, old, and middle aged fatal crashes versus total crashes.
 
 ![Screenshot 2023-03-06 at 6 10 30 PM](https://user-images.githubusercontent.com/120682270/223277539-d0e4e7ad-2fb2-43e1-b5f1-9f8339303f63.png)
