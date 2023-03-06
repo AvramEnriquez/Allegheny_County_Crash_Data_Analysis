@@ -108,7 +108,7 @@ Best: 0.33998489720574393 using {'batch_size': 16, 'epochs': 150, 'learning_rate
 model = create_model()
 
 # Test the model with a single set of latitude and longitude
-test_data = [[40.4578, -80.0159]] # adjust the values here to test different locations
+test_data = [[40.454009, -79.912390]] # adjust the values here to test different locations
 scaled_test_data = scaler.transform(test_data)
 predicted_probs = model.predict(scaled_test_data)[0]
 predicted_classes = np.argsort(predicted_probs)[::-1]
