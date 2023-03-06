@@ -53,7 +53,7 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 model.fit(X_train, y_train, epochs=25, batch_size=32, validation_data=(X_test, y_test))
 
 # Test the model with a single set of latitude and longitude
-test_data = [[40.693872, -79.707209]] # adjust the values here to test different locations
+test_data = [[40.434043, -79.992462]] # adjust the values here to test different locations
 scaled_test_data = scaler.transform(test_data)
 prediction = model.predict(scaled_test_data)[0][0] * 100
 print(f"The percentage chance of getting into a fatal crash at {test_data[0][0]}, {test_data[0][1]} is {prediction:.2f}%")
