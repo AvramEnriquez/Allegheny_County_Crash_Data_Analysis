@@ -17,15 +17,25 @@ Attempt to calculate likelihood of collision types given a latitude and longitud
 through all possible hyperparameters to achieve the highest accuracy. Part of the code can be commented out to manually provide hyperparameters.
 
 COLLISION TYPE
+
 0 - Non-collision
+
 1 - Rear-end
+
 2 - Head-on
+
 3 - Backing
+
 4 - Angle
+
 5 - Sideswipe (same dir.)
+
 6 - Sideswipe (Opposite dir.)
+
 7 - Hit fixed object
+
 8 - Hit pedestrian
+
 9 - Other/Unknown (Expired)
 
 ![Screenshot 2023-03-06 at 6 02 44 PM](https://user-images.githubusercontent.com/120682270/223276894-e4c0e7de-5a2d-466d-9b35-b4158c9b5108.png)
