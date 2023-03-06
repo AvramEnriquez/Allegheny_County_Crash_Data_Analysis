@@ -114,6 +114,6 @@ predicted_probs = model.predict(scaled_test_data)[0]
 predicted_classes = np.argsort(predicted_probs)[::-1]
 
 # Print % likelihood for all collision types
-print(f"The likelihood percentages of collision types for location: {test_data[0][0]}, {test_data[0][1]} are:")
+print(f"The likelihood percentages of collision types for location {test_data[0][0]}, {test_data[0][1]} are:")
 for i in range(10):
     print(f"Collision Type {predicted_classes[i]}: {predicted_probs[predicted_classes[i]]*100:.2f}%")
