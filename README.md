@@ -26,7 +26,7 @@ First, the code loads the data from a CSV file into a pandas DataFrame, replaces
 
 The code defines two functions: 'create_model()' and 'dms_to_degrees()'. 'dms_to_degrees()' converts latitude and longitude data in DMS format to floating-point degrees. 'create_model()' creates a deep learning model using TensorFlow and Keras, with a variable number of hidden layers, neurons, and epochs, and returns the trained model.
 
-Next, the code defines a dictionary of hyperparameters to search over, and uses GridSearchCV to perform a grid search for the optimal hyperparameters. However, the grid search ahs been commented out and the best model found by the grid search is printed and specified manually in the 'create_model()' function, as the grid search takes a couple of hours to run.
+Next, the code defines a dictionary of hyperparameters to search over, and uses GridSearchCV to perform a grid search for the optimal hyperparameters. However, the grid search has been commented out and the best model found by the grid search is printed and specified manually in the 'create_model()' function, as the grid search takes a couple of hours to run.
 
 Finally, the code tests the model with a single set of latitude and longitude data, and prints the likelihood percentages for all collision types. The likelihoods are calculated using the 'predict()' method of the trained model, and the results are sorted in descending order of likelihood.
 
