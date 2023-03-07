@@ -30,7 +30,7 @@ from scikeras.wrappers import KerasClassifier
 # Load data and convert latitude and longitude to degrees
 df = pd.read_csv('CRASH_ALLEGHENY_2021.csv')
 
-# Replace values > 1 in 'FATAL_COUNT' column with 1
+# Replace values > 9 in 'COLLISION_TYPE' column with 9
 df.loc[df['COLLISION_TYPE'] > 9, 'COLLISION_TYPE'] = 9
 
 # Define the hyperparameters to search over
