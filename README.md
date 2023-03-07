@@ -13,7 +13,7 @@ Finally, the map is saved as an HTML file named "crash_map.html" in the same dir
 
 **- Crashes_by_Hr_of_Day.py:**
 
-Plot crashes on a line graph based off time of day. The plot shows a trend of higher number of crashes during late afternoon to evening hours, with a peak around 5 PM.
+Plot crashes on a line graph based off time of day. The plot shows a trend of higher number of crashes during late afternoon to evening hours, with a peak around 4 PM.
 
 ![Figure_1](https://user-images.githubusercontent.com/120682270/223276823-833e9758-63f5-4eda-add8-8617343285f4.png)
 
