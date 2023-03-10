@@ -84,8 +84,10 @@ After loading the data, the code performs a join operation on the two tables usi
 Finally, the code prints the results and closes the cursor and connection to the PostgreSQL server.
 
 All model years:
+
 ![Screenshot 2023-03-08 at 7 45 14 PM](https://user-images.githubusercontent.com/120682270/224194498-24ffef26-f20d-46e9-9ed7-4d352718798b.png)
 Model years 2015 and up:
+
 ![Screenshot 2023-03-08 at 7 45 43 PM](https://user-images.githubusercontent.com/120682270/224194510-acca75fa-a3c7-41f9-a2fd-e94ee528e1bd.png)
 
 
