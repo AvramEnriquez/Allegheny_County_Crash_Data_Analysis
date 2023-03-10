@@ -125,6 +125,9 @@ conn.commit()
 cur.execute('''
     SELECT vehicles.MODEL_CATEGORY, 
     COUNT(
+        fatalities.*)
+        AS TOTAL_CRASHES, 
+    COUNT(
         CASE WHEN fatalities.PED_COUNT > 0 
         THEN 1 END) 
         AS PED_CRASHES, 
@@ -139,10 +142,13 @@ cur.execute('''
 ''')
 
 # Get the results and put them into a Pandas DataFrame
-results = pd.DataFrame(cur.fetchall(), columns=['MODEL_CATEGORY', 'PED_CRASHES', 'PED_DEATH'])
+results = pd.DataFrame(cur.fetchall(), columns=['MODEL_CATEGORY', 'TOTAL_CRASHES', 'PED_CRASHES', 'PED_DEATH'])
 
-# Calculate the percentage of fatal pedestrian crashes per category
-results['FATAL_PED_PERCENTAGE'] = results['PED_DEATH'] / results['PED_CRASHES'] * 100
+# Calculate the percentage of ped crashes vs total crashes per category 
+results['PED_CRASH_PERCENTAGE'] = round(results['PED_CRASHES'] / results['TOTAL_CRASHES'] * 100, 2)
+
+# Calculate the percentage of fatal pedestrian crashes vs total ped crashes per category
+results['FATAL_PED_PERCENTAGE'] = round(results['PED_DEATH'] / results['PED_CRASHES'] * 100, 2)
 
 # Print the results
 print(results)
