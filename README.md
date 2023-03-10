@@ -70,7 +70,7 @@ Finally, the model is tested to find the highest percentage prediction of fatal 
 
 **- SUV+Light_Truck_Deaths_vs_Car_Deaths.py:**
 
-This code is used to connect to a PostgreSQL server, create two tables, load data from two CSV files into the tables, and then perform a join operation on the tables to calculate the percentage of fatal and nonfatal crashes per category of vehicles involved in crashes.
+This code is used to connect to a PostgreSQL server, create two tables, load data from two CSV files into the tables, and then perform a join operation on the tables to calculate pedestrian crash percentage and fatality rate per category of vehicles involved in crashes.
 
 The code sets variables for the database name, username, password, server address, and port. These variables are used to connect to a PostgreSQL server using psycopg2. The code then attempts to connect to the server using a try-except block. If the connection is successful, the code prints a message indicating that the connection was successful. If the connection fails, the code prints a message indicating that the connection failed and exits the program.
 
@@ -81,17 +81,17 @@ The first CSV file contains data on vehicles types and models involved in crashe
 
 There is a line that can be un-commented to only include vehicles with model year 2015 or newer--the year SUVs and light trucks began outselling cars. This could potentially rule out older vehicles (when smaller cars were more popular) that may be skewing results due to fewer active safety features.
 
-After loading the data, the code performs a join operation on the two tables using the CRN column. It calculates the percentage of crashes involving a pedestrian death per category of vehicle using pd.DataFrame().
+After loading the data, the code performs a join operation on the two tables using the CRN column. It calculates the pedestrian crash percentage and fatality rate per category of vehicle using pd.DataFrame().
 
 Finally, the code prints the results and closes the cursor and connection to the PostgreSQL server.
 
 All model years:
 
-![Screenshot 2023-03-09 at 8 13 00 PM](https://user-images.githubusercontent.com/120682270/224198806-9708d0dc-9eac-47af-9b4d-735112c1c6ec.png)
+![Screenshot 2023-03-09 at 8 46 41 PM](https://user-images.githubusercontent.com/120682270/224202413-64a06d7d-d355-4760-a33e-cc13a9096357.png)
 
 Model years 2015 and up:
 
-![Screenshot 2023-03-09 at 8 19 21 PM](https://user-images.githubusercontent.com/120682270/224198815-248512d4-dfa8-4b9d-b9e5-6e744488ba3b.png)
+![Screenshot 2023-03-09 at 8 47 50 PM](https://user-images.githubusercontent.com/120682270/224202434-a89e6b5e-879b-4092-939c-344426d7af0b.png)
 
 
 **- Young_Mid_Old_Fatal_Crash_%.py:**
