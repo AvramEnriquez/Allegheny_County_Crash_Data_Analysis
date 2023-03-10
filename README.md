@@ -74,22 +74,24 @@ This code is used to connect to a PostgreSQL server, create two tables, load dat
 
 The code sets variables for the database name, username, password, server address, and port. These variables are used to connect to a PostgreSQL server using psycopg2. The code then attempts to connect to the server using a try-except block. If the connection is successful, the code prints a message indicating that the connection was successful. If the connection fails, the code prints a message indicating that the connection failed and exits the program.
 
-Next, the code creates two tables in the PostgreSQL server using cur.execute(). The first table is called 'vehicles' and has columns for the crash report number (CRN), unit number, make code, model year, model category, and damage indicator. The CRN alone cannot be the primary key for this table--reason being that multiple vehicles can be in a single crash (1 CRN) and so the CRN and unit number (Assigned number to vehicles in a crash) together form the primary key for this table. The second table is called 'fatalities' and has columns for the CRN, fatal count, injury count, and person count. The CRN is unique here and is the primary key for this table.
+Next, the code creates two tables in the PostgreSQL server using cur.execute(). The first table is called 'vehicles' and has columns for the crash report number (CRN), unit number, make code, model year, and model category. The CRN alone cannot be the primary key for this table--reason being that multiple vehicles can be in a single crash (1 CRN) and so the CRN and unit number (Assigned number to vehicles in a crash) together form the primary key for this table. The second table is called 'fatalities' and has columns for the CRN, pedestrian count, pedestrian death count. The CRN is unique here and is the primary key for this table.
 
 After creating the tables, the code loads data in from VEHICLE_ALLEGHENY_2021.csv and CRASH_ALLEGHENY_2021.csv. 
-The first CSV file contains data on vehicles types and models involved in crashes in Allegheny County in 2021. The code loads this data into the vehicles table. It drops any rows with missing data and categorizes the vehicles into one of four categories: cars, light trucks and SUVs, motorcycles, and vans. Anything not categorized in the four will be categorized as NaN. There is a line that can be un-commented to only include vehicles with model year 2015 or newer--the year SUVs and light trucks began outselling cars. The second CSV file contains data on fatalities of crashes in Allegheny County in 2021. The code loads this data into the fatalities table. It drops any rows with missing data.
+The first CSV file contains data on vehicles types and models involved in crashes in Allegheny County in 2021. The code loads this data into the vehicles table. It drops any rows with missing data and categorizes the vehicles into one of six categories: cars, light trucks/suvs, heavy trucks, motorcycles, buses, and vans. Anything not categorized will be categorized as NaN. The second CSV file contains data on fatalities of crashes in Allegheny County in 2021. The code loads this data into the fatalities table. It drops any rows with missing data.
 
-After loading the data, the code performs a join operation on the two tables using the CRN column. It calculates the percentage of fatal and nonfatal crashes per category of vehicles involved in crashes using pd.DataFrame().
+There is a line that can be un-commented to only include vehicles with model year 2015 or newer--the year SUVs and light trucks began outselling cars. This could potentially rule out older vehicles (when smaller cars were more popular) that may be skewing results due to fewer active safety features.
+
+After loading the data, the code performs a join operation on the two tables using the CRN column. It calculates the percentage of crashes involving a pedestrian death per category of vehicle using pd.DataFrame().
 
 Finally, the code prints the results and closes the cursor and connection to the PostgreSQL server.
 
 All model years:
 
-![Screenshot 2023-03-08 at 7 45 14 PM](https://user-images.githubusercontent.com/120682270/224194498-24ffef26-f20d-46e9-9ed7-4d352718798b.png)
+![Screenshot 2023-03-09 at 8 13 00 PM](https://user-images.githubusercontent.com/120682270/224198806-9708d0dc-9eac-47af-9b4d-735112c1c6ec.png)
 
 Model years 2015 and up:
 
-![Screenshot 2023-03-08 at 7 45 43 PM](https://user-images.githubusercontent.com/120682270/224194510-acca75fa-a3c7-41f9-a2fd-e94ee528e1bd.png)
+![Screenshot 2023-03-09 at 8 19 21 PM](https://user-images.githubusercontent.com/120682270/224198815-248512d4-dfa8-4b9d-b9e5-6e744488ba3b.png)
 
 
 **- Young_Mid_Old_Fatal_Crash_%.py:**
