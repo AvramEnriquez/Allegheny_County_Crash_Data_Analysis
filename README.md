@@ -68,6 +68,30 @@ Finally, the model is tested to find the highest percentage prediction of fatal 
 ![Screenshot 2023-03-06 at 6 07 50 PM](https://user-images.githubusercontent.com/120682270/223277119-318f8cc7-6481-462d-a707-178f762c7a43.png)
 
 
+**- SUV+Light_Truck_Deaths_vs_Car_Deaths.py:**
+
+This code is used to connect to a PostgreSQL server, create two tables, load data from two CSV files into the tables, and then perform a join operation on the tables to calculate the percentage of fatal and nonfatal crashes per category of vehicles involved in crashes.
+
+The code sets variables for the database name, username, password, server address, and port. These variables are used to connect to a PostgreSQL server using psycopg2. The code then attempts to connect to the server using a try-except block. If the connection is successful, the code prints a message indicating that the connection was successful. If the connection fails, the code prints a message indicating that the connection failed and exits the program.
+
+Next, the code creates two tables in the PostgreSQL server using cur.execute(). The first table is called 'vehicles' and has columns for the crash report number (CRN), unit number, make code, model year, model category, and damage indicator. The CRN alone cannot be the primary key for this table--reason being that multiple vehicles can be in a single crash (1 CRN) and so the CRN and unit number (Assigned number to vehicles in a crash) together form the primary key for this table. The second table is called 'fatalities' and has columns for the CRN, fatal count, injury count, and person count. The CRN is unique here and is the primary key for this table.
+
+After creating the tables, the code loads data in from VEHICLE_ALLEGHENY_2021.csv and CRASH_ALLEGHENY_2021.csv. 
+The first CSV file contains data on vehicles types and models involved in crashes in Allegheny County in 2021. The code loads this data into the vehicles table. It drops any rows with missing data and categorizes the vehicles into one of four categories: cars, light trucks and SUVs, motorcycles, and vans. Anything not categorized in the four will be categorized as NaN. There is a line that can be un-commented to only include vehicles with model year 2015 or newer--the year SUVs and light trucks began outselling cars. The second CSV file contains data on fatalities of crashes in Allegheny County in 2021. The code loads this data into the fatalities table. It drops any rows with missing data.
+
+After loading the data, the code performs a join operation on the two tables using the CRN column. It calculates the percentage of fatal and nonfatal crashes per category of vehicles involved in crashes using pd.DataFrame().
+
+Finally, the code prints the results and closes the cursor and connection to the PostgreSQL server.
+
+All model years:
+
+![Screenshot 2023-03-08 at 7 45 14 PM](https://user-images.githubusercontent.com/120682270/224194498-24ffef26-f20d-46e9-9ed7-4d352718798b.png)
+
+Model years 2015 and up:
+
+![Screenshot 2023-03-08 at 7 45 43 PM](https://user-images.githubusercontent.com/120682270/224194510-acca75fa-a3c7-41f9-a2fd-e94ee528e1bd.png)
+
+
 **- Young_Mid_Old_Fatal_Crash_%.py:**
 
 Calculate the percentages of young, old, and middle aged fatal crashes versus total crashes. It calculates the total number of fatal crashes for each age group (young_fatal, old_fatal, and middle_fatal) by selecting the rows in the DataFrame where the driver count for that age group is greater than 0.
