@@ -63,7 +63,7 @@ df = df.dropna(subset=['CRN', 'UNIT_NUM', 'MAKE_CD', 'MODEL_YR'])
 # Rules out old sedans that may be skewing results with higher fatality rate due to fewer safety features
 # df = df[df['MODEL_YR'] >= 2015]
 
-# Categorize the body types into cars, trucks/suvs, motorcycles, buses, and vans
+# Categorize the body types into cars, light trucks/suvs, heavy trucks, motorcycles, buses, and vans
 df.loc[df['BODY_TYPE'].isin([1,2,3,4,5,6,8,9,16]), 'MODEL_CATEGORY'] = 'Cars'
 df.loc[df['BODY_TYPE'].isin([10,11,12,13,15,19,50,51,52,53,58,59,60,61,62,68,69]), 'MODEL_CATEGORY'] = 'Light Trucks + SUVs'
 df.loc[df['BODY_TYPE'].isin([70,71,72,73,74,75,76,78,79]), 'MODEL_CATEGORY'] = 'Heavy Trucks'
