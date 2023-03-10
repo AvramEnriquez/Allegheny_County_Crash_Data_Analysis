@@ -79,7 +79,7 @@ Next, the code creates two tables in the PostgreSQL server using cur.execute(). 
 After creating the tables, the code loads data in from VEHICLE_ALLEGHENY_2021.csv and CRASH_ALLEGHENY_2021.csv. 
 The first CSV file contains data on vehicles types and models involved in crashes in Allegheny County in 2021. The code loads this data into the vehicles table. It drops any rows with missing data and categorizes the vehicles into one of six categories: cars, light trucks/suvs, heavy trucks, motorcycles, buses, and vans. Anything not categorized will be categorized as NaN. The second CSV file contains data on fatalities of crashes in Allegheny County in 2021. The code loads this data into the fatalities table. It drops any rows with missing data.
 
-There is a line that can be un-commented to only include vehicles with model year 2015 or newer--the year SUVs and light trucks began outselling cars. This could potentially rule out older vehicles (when smaller cars were more popular) that may be skewing results with higher fatality rate due to fewer active safety features
+There is a line that can be un-commented to only include vehicles with model year 2015 or newer--the year SUVs and light trucks began outselling cars. This could potentially rule out older vehicles (when smaller cars were more popular) that may be skewing results due to fewer active safety features.
 
 After loading the data, the code performs a join operation on the two tables using the CRN column. It calculates the percentage of crashes involving a pedestrian death per category of vehicle using pd.DataFrame().
 
