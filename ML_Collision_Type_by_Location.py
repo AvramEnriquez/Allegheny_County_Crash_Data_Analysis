@@ -42,7 +42,7 @@ param_grid = {'batch_size': [16, 32, 64],
 
 # Define a function to create the model with the specified hyperparameters, defaults to given otherwise
 # Fitted with early stopping
-def create_model(learning_rate=0.001, num_hidden_layers=3, num_neurons=32, epochs=150, batch_size=16):
+def create_model(X_train, y_train, X_test, y_test, learning_rate=0.001, num_hidden_layers=3, num_neurons=32, epochs=150, batch_size=16):
     model = tf.keras.Sequential()
     model.add(tf.keras.layers.Dense(num_neurons, activation='relu', input_shape=(2,)))
     for _ in range(num_hidden_layers):
@@ -95,7 +95,6 @@ early_stop = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=20, v
 
 # # Print the best hyperparameters and the corresponding validation accuracy
 # print(f"Best: {grid_result.best_score_} using {grid_result.best_params_}")
-# # 
 """-To here to remove grid search. Adjust hyperparameters in create_model() function for manual model creation. Running takes a couple of hours.""" 
 
 """
@@ -105,10 +104,10 @@ Best: 0.33998489720574393 using {'batch_size': 16, 'epochs': 150, 'learning_rate
 
 """Comment out first model variable if manually providing hyperparameters"""
 # model = create_model(**grid_result.best_params_)
-model = create_model()
+model = create_model(X_train, y_train, X_test, y_test)
 
 # Test the model with a single set of latitude and longitude
-test_data = [[40.454009, -79.912390]] # adjust the values here to test different locations
+test_data = [[40.4283, -79.9806]] # adjust the values here to test different locations
 scaled_test_data = scaler.transform(test_data)
 predicted_probs = model.predict(scaled_test_data)[0]
 predicted_classes = np.argsort(predicted_probs)[::-1]
