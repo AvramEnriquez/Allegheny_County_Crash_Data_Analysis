@@ -87,11 +87,11 @@ Finally, the code prints the results and closes the cursor and connection to the
 
 All model years:
 
-![Screenshot 2023-03-09 at 8 46 41 PM](https://user-images.githubusercontent.com/120682270/224202413-64a06d7d-d355-4760-a33e-cc13a9096357.png)
+![Screenshot 2023-03-11 at 12 42 30 PM](https://user-images.githubusercontent.com/120682270/224504636-0e43e90f-8f13-4055-aaac-757b5e4b136b.png)
 
 Model years 2015 and up:
 
-![Screenshot 2023-03-09 at 8 47 50 PM](https://user-images.githubusercontent.com/120682270/224202434-a89e6b5e-879b-4092-939c-344426d7af0b.png)
+![Screenshot 2023-03-11 at 12 43 15 PM](https://user-images.githubusercontent.com/120682270/224504638-534316a9-39f9-4059-8d6b-2e26b00fe862.png)
 
 
 **- Young_Mid_Old_Fatal_Crash_%.py:**
