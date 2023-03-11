@@ -1,5 +1,5 @@
 # Allegheny_County_Crash_Data_Analysis
-Data analysis of Allegheny County crash stats for 2021.
+Data analysis of Allegheny County crash stats for either 2017-2021 or 2021 alone. The files state the years used.
 Made with use of ChatGPT. Validated, fixed, and cleaned up by me.
 
 **- Crash_Locations.py:**
@@ -96,6 +96,6 @@ Model years 2015 and up:
 
 **- Young_Mid_Old_Fatal_Crash_%.py:**
 
-Calculate the percentages of young, old, and middle aged fatal crashes versus total crashes. It calculates the total number of fatal crashes for each age group (young_fatal, old_fatal, and middle_fatal) by selecting the rows in the DataFrame where the driver count for that age group is greater than 0.
+Calculate the percentages of young, old, and middle aged fatal crashes versus total crashes for 2021. It calculates the total number of fatal crashes for each age group (young_fatal, old_fatal, and middle_fatal) by selecting the rows in the DataFrame where the driver count for that age group is greater than 0.
 
 ![Screenshot 2023-03-06 at 6 10 30 PM](https://user-images.githubusercontent.com/120682270/223277539-d0e4e7ad-2fb2-43e1-b5f1-9f8339303f63.png)
