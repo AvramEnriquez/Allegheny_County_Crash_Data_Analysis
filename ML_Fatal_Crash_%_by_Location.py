@@ -9,8 +9,13 @@ import re
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-# Load data and convert latitude and longitude to degrees
-df = pd.read_csv('CRASH_ALLEGHENY_2021.csv')
+# Load data from 2017-2021
+filenames = ['CRASH_ALLEGHENY_2017.csv', 'CRASH_ALLEGHENY_2018.csv', 'CRASH_ALLEGHENY_2019.csv', 'CRASH_ALLEGHENY_2020.csv', 'CRASH_ALLEGHENY_2021.csv']
+dfs = []
+for filename in filenames:
+    df = pd.read_csv(filename)
+    dfs.append(df)
+df = pd.concat(dfs, ignore_index=True)
 
 def dms_to_degrees(dms_str):
     parts = re.split(':|\s+', dms_str)

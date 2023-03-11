@@ -54,8 +54,13 @@ except psycopg2.errors.DuplicateTable:
     print("Table fatalities already exists.")
 conn.commit()
 
-# Load VEHICLE data into a pandas dataframe
-df = pd.read_csv('VEHICLE_ALLEGHENY_2021.csv')
+# Load VEHICLE data from 2017-2021 into a pandas dataframe
+filenames = ['VEHICLE_ALLEGHENY_2017.csv', 'VEHICLE_ALLEGHENY_2018.csv', 'VEHICLE_ALLEGHENY_2019.csv', 'VEHICLE_ALLEGHENY_2020.csv', 'VEHICLE_ALLEGHENY_2021.csv']
+dfs = []
+for filename in filenames:
+    df = pd.read_csv(filename)
+    dfs.append(df)
+df = pd.concat(dfs, ignore_index=True)
 # Drop rows with missing data
 df = df.dropna(subset=['CRN', 'UNIT_NUM', 'MAKE_CD', 'MODEL_YR'])
 
@@ -96,8 +101,13 @@ for index, row in df.iterrows():
         row['MODEL_CATEGORY'])
     )
 
-# Load CRASH data into a pandas dataframe
-df = pd.read_csv('CRASH_ALLEGHENY_2021.csv')
+# Load CRASH data from 2017-2021 into a pandas dataframe
+filenames = ['CRASH_ALLEGHENY_2017.csv', 'CRASH_ALLEGHENY_2018.csv', 'CRASH_ALLEGHENY_2019.csv', 'CRASH_ALLEGHENY_2020.csv', 'CRASH_ALLEGHENY_2021.csv']
+dfs = []
+for filename in filenames:
+    df = pd.read_csv(filename)
+    dfs.append(df)
+df = pd.concat(dfs, ignore_index=True)
 # Drop rows with missing data
 df = df.dropna(subset=['CRN', 'PED_COUNT', 'PED_DEATH_COUNT'])
 # Insert data from pandas dataframe into PostgreSQL table
@@ -151,6 +161,7 @@ results['PED_CRASH_PERCENTAGE'] = round(results['PED_CRASHES'] / results['TOTAL_
 results['FATAL_PED_PERCENTAGE'] = round(results['PED_DEATH'] / results['PED_CRASHES'] * 100, 2)
 
 # Print the results
+print("Allegheny Crash Data 2017-2021")
 print(results)
 
 # Close the cursor and connection
